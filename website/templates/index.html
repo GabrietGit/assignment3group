@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Music Event Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  </head>
+  <body>
+    <style>.footer{background-color: rgb(255, 32, 199);}</style>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Music</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="event creation.html">Create event</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Categories
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Classical</a></li>
+                  <li><a class="dropdown-item" href="#">Pop</a></li>
+                  <li><a class="dropdown-item" href="#">Jazz</a></li>
+                  <li><a class="dropdown-item" href="#">Rock</a></li>
+                  <li><a class="dropdown-item" href="#">Country</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="user booking history.html">Booking History</a>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+      <div class="container">
+          <div class="row">
+            <div class="col">
+              <h1>Music</h1>
+              <p>
+                You can find all the available music events here.
+              </p>
+            </div>
+            <div class="col">
+              <div class="container d-flex">
+                <div id="carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                  <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                  </div>              
+                  <div class="carousel inner">
+                    <div class="carousel-item active">
+                      <img src="img/Music festival 1.jpeg" class="d-block w-100" alt="Music Festival 1">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="img/Music festival 2.jpeg" class="d-block w-100" alt="Music Festival 2">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="img/Music festival 3.jpeg" class="d-block w-100" alt="Music Festival 3">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>   
+          </div>
+          <div class="row">
+            <div class="col">
+              <h1>Popular events</h1>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <a href="event details.html"><p><img src="img/Event 1 resized.jpg"></p></a>
+              <h4>Event 1</h4>
+              <p>The event description goes here...</p>
+              <p>Status: Available</p>
+            </div>
+            <div class="col">
+              <a href="event details.html"><p><img src="img/Event 2 resized.jpg"></p></a>
+              <h4>Event 2</h4>
+              <p>The event description...</p>
+              <p>Status: Upcoming</p>
+            </div>
+            <div class="col">
+              <a href="event details.html"><p><img src="img/Event 3 resized.jpg"></p></a>
+              <h4>Event 3</h4>
+              <p>The event description...</p>
+              <p>Status: Available</p>
+            </div>
+          </div>
+      </div>
+      <div class="footer">
+        Copyright 2022
+      </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+  </body>
+</html>
