@@ -29,7 +29,7 @@ class Events(db.Model):
     description = db.Column(db.String(200))
     # ... Create the Comments db.relationship
 	# relation to call destination.comments and comment.destination
-    comments = db.relationship('Comment', backref='destination')
+    comments = db.relationship('Comment', backref='events')
 
     
 	
