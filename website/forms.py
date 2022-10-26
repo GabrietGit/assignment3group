@@ -7,13 +7,13 @@ from flask_wtf.file import FileRequired, FileField, FileAllowed
 ALLOWED_FILE = {'PNG','JPG','png','jpg'}
 
 class EventsForm(FlaskForm):
-  name = StringField('Country', validators=[InputRequired()])
-  description = TextAreaField('Description', 
+  Music_name = StringField('Music Name', validators=[InputRequired()])
+  Music_type = TextAreaField('Music Type', 
             validators=[InputRequired()])
-  image = FileField('Destination Image', validators=[
+  image = FileField('Upload Image', validators=[
     FileRequired(message='Image cannot be empty'),
     FileAllowed(ALLOWED_FILE, message='Only supports png,jpg,JPG,PNG')])
-  currency = StringField('Currency', validators=[InputRequired()])
+  Artist_Name = StringField('Currency', validators=[InputRequired()])
   submit = SubmitField("Create")
 
 #creates the login information
