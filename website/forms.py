@@ -6,6 +6,7 @@ from flask_wtf.file import FileRequired, FileField, FileAllowed
 
 ALLOWED_FILE = {'PNG','JPG','png','jpg'}
 
+#books events
 class BookForm(FlaskForm):
   name = StringField('Event', validators=[InputRequired()])
   email_id = StringField('Email Address', validators=[Email('Please enter a valid email')])
