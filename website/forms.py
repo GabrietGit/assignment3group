@@ -11,6 +11,7 @@ class BookForm(FlaskForm):
   email_id = StringField('Email Address', validators=[Email('Please enter a valid email')])
   phone_number = StringField('Phone Number', validators=[InputRequired()])
   ticket_amount = StringField('Ticket Amount', validators=[InputRequired()])
+  submit = SubmitField("Book")
 
 class EventsForm(FlaskForm):
   name = StringField('Country', validators=[InputRequired()])
