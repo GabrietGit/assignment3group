@@ -1,7 +1,7 @@
 
 from datetime import datetime
 from flask_wtf import FlaskForm
-from wtforms.fields import TextAreaField, SubmitField, StringField, PasswordField
+from wtforms.fields import TextAreaField, SubmitField, StringField, PasswordField, SelectField
 from wtforms.validators import InputRequired, Length, Email, EqualTo
 from flask_wtf.file import FileRequired, FileField, FileAllowed
 
@@ -18,8 +18,8 @@ class BookForm(FlaskForm):
 #Events Creation
 class EventsForm(FlaskForm):
   music_name = StringField('Music Name', validators=[InputRequired()])
-  music_type = TextAreaField('Music Type', 
-            validators=[InputRequired()])
+  music_type = SelectField(u'Music Type', 
+            choices=[('None'), ('Classical'), ('Pop'), ('Jazz'), ('Rock'), ('Country')])
   image = FileField('Upload Image', validators=[
     FileRequired(message='Image cannot be empty'),
     FileAllowed(ALLOWED_FILE, message='Only supports png,jpg,JPG,PNG')])
