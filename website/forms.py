@@ -6,6 +6,7 @@ from flask_wtf.file import FileRequired, FileField, FileAllowed
 
 ALLOWED_FILE = {'PNG','JPG','png','jpg'}
 
+#books event
 class BookForm(FlaskForm):
   name = StringField('Event', validators=[InputRequired()])
   email_id = StringField('Email Address', validators=[Email('Please enter a valid email')])
@@ -13,15 +14,20 @@ class BookForm(FlaskForm):
   ticket_amount = StringField('Ticket Amount', validators=[InputRequired()])
   submit = SubmitField("Book")
 
+#Events Creation
 class EventsForm(FlaskForm):
-  name = StringField('Country', validators=[InputRequired()])
-  description = TextAreaField('Description', 
+  music_name = StringField('Music Name', validators=[InputRequired()])
+  music_type = TextAreaField('Music Type', 
             validators=[InputRequired()])
-  image = FileField('Destination Image', validators=[
+  image = FileField('Upload Image', validators=[
     FileRequired(message='Image cannot be empty'),
     FileAllowed(ALLOWED_FILE, message='Only supports png,jpg,JPG,PNG')])
-  currency = StringField('Currency', validators=[InputRequired()])
-  submit = SubmitField("Create")
+  artist_name = StringField('Artist Name', validators=[InputRequired()])
+  date_and_time = StringField('Date and Time', validators=[InputRequired()])
+  venue = StringField('Venue', validators=[InputRequired()])
+  event_status = StringField('Event Status', validators=[InputRequired()])
+  enter_description = StringField('Enter a description for the event', validators=[InputRequired()])
+  submit = SubmitField("Confirm")
 
 #creates the login information
 class LoginForm(FlaskForm):
