@@ -1,4 +1,5 @@
 
+from datetime import datetime
 from flask_wtf import FlaskForm
 from wtforms.fields import TextAreaField, SubmitField, StringField, PasswordField
 from wtforms.validators import InputRequired, Length, Email, EqualTo
@@ -23,7 +24,7 @@ class EventsForm(FlaskForm):
     FileRequired(message='Image cannot be empty'),
     FileAllowed(ALLOWED_FILE, message='Only supports png,jpg,JPG,PNG')])
   artist_name = StringField('Artist Name', validators=[InputRequired()])
-  date_and_time = StringField('Date and Time', validators=[InputRequired()])
+  date_and_time = datetime('Date and Time', validators=[InputRequired()])
   venue = StringField('Venue', validators=[InputRequired()])
   event_status = StringField('Event Status', validators=[InputRequired()])
   enter_description = StringField('Enter a description for the event', validators=[InputRequired()])
