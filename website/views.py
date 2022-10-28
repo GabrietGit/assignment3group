@@ -1,8 +1,8 @@
-from multiprocessing import Event
 from flask import Blueprint, render_template, request, redirect,url_for
 from .models import Events
 
 bp = Blueprint('main', __name__)
+
 
 @bp.route('/')
 def index():
