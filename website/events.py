@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for
-from .models import Destination, Comment
-from .forms import DestinationForm, CommentForm
+from .models import Events, Comment
+from .forms import EventsForm, CommentForm
 from . import db, app
 import os
 from werkzeug.utils import secure_filename
