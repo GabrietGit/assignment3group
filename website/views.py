@@ -4,11 +4,6 @@ from .models import Events
 
 bp = Blueprint('main', __name__)
 
-
-@bp.route('/')
-def index():
-    return render_template('index.html')
-
 @bp.route('/')
 def index():
     events = Events.query.all()    
