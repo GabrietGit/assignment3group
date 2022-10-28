@@ -12,7 +12,6 @@ bp = Blueprint('events', __name__, url_prefix='/events')
 
 @bp.route('/book', methods = ['GET', 'POST'])
 def book():
-    print('Method type: ', request.method)
     form = BookForm()
     if form.validate_on_submit():
          db_file_path=check_upload_file(form)
