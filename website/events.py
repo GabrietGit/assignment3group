@@ -8,10 +8,3 @@ from werkzeug.utils import secure_filename
 from flask_login import login_required, current_user
 
 bp = Blueprint('destination', __name__, url_prefix='/destinations')
-
-<<<<<<< HEAD
-#def book(): Ben sucks cock
-=======
-@bp.route
-def book():
->>>>>>> bbf73c1161dbac513bf486978879d2d2cd905e6e
