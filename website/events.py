@@ -11,9 +11,11 @@ bp = Blueprint('events', __name__, url_prefix='/events')
 
 @bp.route('/book', methods = ['GET', 'POST'])
 def book():
-    print('Method type: ', request.method)
     form = BookForm()
     if form.validate_on_submit():
-         db_file_path=check_upload_file(form)
-         event=Events(name=form.name.data,description=form.description.data, 
-    image=db_file_path,currency=form.currency.data)()
+        event=Events(name=form.name.data,email=form.email_id.data, 
+        phone=form.phone_number,ticket=form.ticket_amount.data)()
+        db.session.add(event)
+        db.session.commit()
+        print('Successfully created new travel destination', 'success')
+    return render_template('events/book.html', form=form)
