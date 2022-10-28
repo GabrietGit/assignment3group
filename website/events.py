@@ -7,4 +7,7 @@ from werkzeug.utils import secure_filename
 #additional import:
 from flask_login import login_required, current_user
 
-bp = Blueprint('destination', __name__, url_prefix='/destinations')
+bp = Blueprint('events', __name__, url_prefix='/events')
+
+def book():
+    
