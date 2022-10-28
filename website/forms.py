@@ -24,8 +24,8 @@ class EventsForm(FlaskForm):
   image = FileField('Upload Image', validators=[
     FileRequired(message='Image cannot be empty'),
     FileAllowed(ALLOWED_FILE, message='Only supports png,jpg,JPG,PNG')])
-  artist_name = StringField('Artist Name', format='%Y-%m-%d'())
-  date_and_time = DateField('Date and Time', validators=[InputRequired()])
+  artist_name = StringField('Artist Name', validators=[InputRequired()])
+  date_and_time = DateField('Date and Time', format='%Y-%m-%d'())
   venue = StringField('Venue', validators=[InputRequired()])
   event_status = SelectField(u'Music Type', 
             choices=[('None'), ('Available'), ('Inactive'), ('Upcoming'), ('Cancelled'), ('Booked')], coerce=string, validate_choice=True)
