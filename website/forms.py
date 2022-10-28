@@ -2,7 +2,7 @@
 from datetime import datetime
 import string
 from flask_wtf import FlaskForm
-from wtforms.fields import TextAreaField, SubmitField, StringField, PasswordField, SelectField, DateField
+from wtforms.fields import TextAreaField, SubmitField, StringField, PasswordField, SelectField, DateField, DateTimeField
 from wtforms.validators import InputRequired, Length, Email, EqualTo
 from flask_wtf.file import FileRequired, FileField, FileAllowed
 
@@ -25,7 +25,7 @@ class EventsForm(FlaskForm):
     FileRequired(message='Image cannot be empty'),
     FileAllowed(ALLOWED_FILE, message='Only supports png,jpg,JPG,PNG')])
   artist_name = StringField('Artist Name', validators=[InputRequired()])
-  date_and_time = DateField('Date and Time', format='%Y-%m-%d'())
+  date_and_time = DateField('Date and Time', format='%Y-%m-%d')
   venue = StringField('Venue', validators=[InputRequired()])
   event_status = SelectField(u'Music Type', 
             choices=[('None'), ('Available'), ('Inactive'), ('Upcoming'), ('Cancelled'), ('Booked')], coerce=string, validate_choice=True)
