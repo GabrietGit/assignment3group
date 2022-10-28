@@ -14,7 +14,7 @@ def search():
     if request.args['search']:
         print(request.args['search'])
         evnt = "%" + request.args['search'] + '%'
-        events = Events.query.filter(Event.description.like(evnt)).all()
+        events = Events.query.filter(Events.description.like(evnt)).all()
         return render_template('index.html', events=events)
     else:
         return redirect(url_for('main.index'))
