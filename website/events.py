@@ -1,3 +1,4 @@
+from unicodedata import name
 from flask import Blueprint, render_template, request, redirect, url_for
 from .models import Events, Comment
 from .forms import BookForm, EventsForm, CommentForm
@@ -17,3 +18,22 @@ def book():
          db_file_path=check_upload_file(form)
          event=Events(name=form.name.data,description=form.description.data, 
     image=db_file_path,currency=form.currency.data)()
+
+@bp.route('/create', methods = ['GET', 'POST'])
+@login_required
+def create():
+  print('Method type: ', request.method)
+  form = EventsForm()
+  if form.validate_on_submit():
+    #call the function that checks and returns image
+    db_file_path=check_upload_file(form)
+    event=Events(name=form.music_name.data, description=form.music_type.data,  
+    image=db_file_path,name=form.artist_name.data,name=form.venue.data,description=form.event_status.data,description=form.enter_description.data)
+    # add the object to the db session
+    db.session.add(event)
+    # commit to the database
+    db.session.commit()
+    print('Successfully created new travel destination', 'success')
+    #Always end with redirect when form is valid
+    return redirect(url_for('destinations.event creation'))
+  return render_template('destinations/event creations.html', form=form)
