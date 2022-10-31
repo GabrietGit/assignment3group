@@ -1,4 +1,4 @@
-
+from flask import Blueprint, render_template, request, redirect, url_for
 from .models import Events, Comment
 from .forms import BookForm, EventsForm, CommentForm
 from . import db, app
@@ -20,7 +20,6 @@ def book():
         print('Successfully booked event', 'success')
     return render_template('destinations/event details.html', form=form) 
 
->>>>>>> 16cebb4ff286e4e4a6ca1d41c8cf5ef87ba1e1c7
 @bp.route('/create', methods = ['GET', 'POST'])
 @login_required
 def create():
