@@ -1,4 +1,6 @@
+from unicodedata import name
 from flask import Blueprint, render_template, request, redirect, url_for
+<<<<<<< HEAD
 from .models import Events
 from .forms import EventsForm
 from . import db
@@ -9,6 +11,29 @@ from flask_login import login_required
 
 bp = Blueprint('events', __name__, url_prefix='/events')
 
+=======
+from .models import Events, Comment
+from .forms import BookForm, EventsForm, CommentForm
+from . import db, app
+import os
+from werkzeug.utils import secure_filename
+#additional import:
+from flask_login import login_required, current_user
+
+bp = Blueprint('events', __name__, url_prefix='/events')
+
+@bp.route('/book', methods = ['GET', 'POST'])
+def book():
+    form = BookForm()
+    if form.validate_on_submit():
+        event=Events(name=form.name.data,email=form.email_id.data, 
+        phone=form.phone_number.data,ticet=form.ticket_amount.data)()
+        db.session.add(event)
+        db.session.commit
+        print('Successfully booked event', 'success')
+    return render_template('destinations/event details.html', form=form) 
+
+>>>>>>> 16cebb4ff286e4e4a6ca1d41c8cf5ef87ba1e1c7
 @bp.route('/create', methods = ['GET', 'POST'])
 @login_required
 def create():
@@ -17,6 +42,7 @@ def create():
   if form.validate_on_submit():
     #call the function that checks and returns image
     db_file_path=check_upload_file(form)
+<<<<<<< HEAD
     destination=Events(name=form.name.data,description=form.description.data, 
     image=db_file_path,currency=form.currency.data)
     # add the object to the db session
@@ -27,6 +53,18 @@ def create():
     #Always end with redirect when form is valid
     return redirect(url_for('events.create'))
   return render_template('events/user booking history.html', form=form)
+=======
+    event=Events(name=form.music_name.data, description=form.music_type.data,  
+    image=db_file_path,name=form.artist_name.data,name=form.venue.data,description=form.event_status.data,description=form.enter_description.data)
+    # add the object to the db session
+    db.session.add(event)
+    # commit to the database
+    db.session.commit()
+    print('Successfully created new event', 'success')
+    #Always end with redirect when form is valid
+    return redirect(url_for('destinations.event creation'))
+  return render_template('destinations/event creations.html', form=form)
+>>>>>>> 16cebb4ff286e4e4a6ca1d41c8cf5ef87ba1e1c7
 
 def check_upload_file(form):
   #get file data from form  

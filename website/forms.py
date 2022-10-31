@@ -1,12 +1,12 @@
 
+from datetime import datetime
+import string
 from flask_wtf import FlaskForm
-from wtforms.fields import TextAreaField, SubmitField, StringField, PasswordField
+from wtforms.fields import TextAreaField, SubmitField, StringField, PasswordField, SelectField, DateField, DateTimeField
 from wtforms.validators import InputRequired, Length, Email, EqualTo
 from flask_wtf.file import FileRequired, FileField, FileAllowed
 
 ALLOWED_FILE = {'PNG','JPG','png','jpg'}
-
-#testing
 
 #books event
 class BookForm(FlaskForm):
@@ -16,15 +16,21 @@ class BookForm(FlaskForm):
   ticket_amount = StringField('Ticket Amount', validators=[InputRequired()])
   submit = SubmitField("Book")
 
+#Events Creation
 class EventsForm(FlaskForm):
-  name = StringField('Country', validators=[InputRequired()])
-  description = TextAreaField('Description', 
-            validators=[InputRequired()])
-  image = FileField('Destination Image', validators=[
+  music_name = StringField('Music Name', validators=[InputRequired()])
+  music_type = SelectField(u'Music Type', 
+            choices=[('None'), ('Classical'), ('Pop'), ('Jazz'), ('Rock'), ('Country')], coerce=string, validate_choice=True)
+  image = FileField('Upload Image', validators=[
     FileRequired(message='Image cannot be empty'),
     FileAllowed(ALLOWED_FILE, message='Only supports png,jpg,JPG,PNG')])
-  currency = StringField('Currency', validators=[InputRequired()])
-  submit = SubmitField("Create")
+  artist_name = StringField('Artist Name', validators=[InputRequired()])
+  date_and_time = DateField('Date and Time', format='%Y-%m-%d')
+  venue = StringField('Venue', validators=[InputRequired()])
+  event_status = SelectField(u'Music Type', 
+            choices=[('None'), ('Available'), ('Inactive'), ('Upcoming'), ('Cancelled'), ('Booked')], coerce=string, validate_choice=True)
+  enter_description = TextAreaField('Enter a description for the event', validators=[InputRequired()])
+  submit = SubmitField("Confirm")
 
 #creates the login information
 class LoginForm(FlaskForm):
