@@ -14,9 +14,12 @@ bp = Blueprint('events', __name__, url_prefix='/events')
 def book():
     form = BookForm()
     if form.validate_on_submit():
-         db_file_path=check_upload_file(form)
-         event=Events(name=form.name.data,description=form.description.data, 
-    image=db_file_path,currency=form.currency.data)()
+        event=Events(name=form.name.data,email=form.email_id.data, 
+        phone=form.phone_number.data,ticet=form.ticket_amount.data)()
+        db.session.add(event)
+        db.session.commit
+        print('Successfully booked event', 'success')
+    return render_template('destinations/event details.html', form=form) 
 
 @bp.route('/create', methods = ['GET', 'POST'])
 @login_required
@@ -32,7 +35,7 @@ def create():
     db.session.add(event)
     # commit to the database
     db.session.commit()
-    print('Successfully created new travel destination', 'success')
+    print('Successfully created new event', 'success')
     #Always end with redirect when form is valid
     return redirect(url_for('destinations.event creation'))
   return render_template('destinations/event creations.html', form=form)
