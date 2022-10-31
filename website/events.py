@@ -1,11 +1,11 @@
 from flask import Blueprint, render_template, request, redirect, url_for
 from .models import Events
-from .forms import EventsForm, CommentForm
-from . import db, app
+from .forms import EventsForm
+from . import db
 import os
 from werkzeug.utils import secure_filename
 #additional import:
-from flask_login import login_required, current_user
+from flask_login import login_required
 
 bp = Blueprint('events', __name__, url_prefix='/events')
 
