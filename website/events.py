@@ -1,3 +1,4 @@
+from asyncio import events
 from flask import Blueprint, render_template, request, redirect, url_for
 from .models import Events, Comment
 from .forms import BookForm, EventsForm
@@ -18,7 +19,7 @@ def book():
         db.session.add(event)
         db.session.commit
         print('Successfully booked event', 'success')
-    return render_template('destinations/event details.html', form=form) 
+    return render_template('events/event details.html', form=form) 
 
 @bp.route('/create', methods = ['GET', 'POST'])
 @login_required
@@ -28,16 +29,16 @@ def create():
   if form.validate_on_submit():
     #call the function that checks and returns image
     db_file_path=check_upload_file(form)
-    destination=Events(name=form.name.data,description=form.description.data, 
+    events=Events(name=form.name.data,description=form.description.data, 
     image=db_file_path,currency=form.currency.data)
     # add the object to the db session
-    db.session.add(destination)
+    db.session.add(events)
     # commit to the database
     db.session.commit()
     print('Successfully created new travel destination', 'success')
     #Always end with redirect when form is valid
     return redirect(url_for('events.create'))
-  return render_template('events/user booking history.html', form=form)
+  return render_template('events/event creation.html', form=form)
 
 def check_upload_file(form):
   #get file data from form  
