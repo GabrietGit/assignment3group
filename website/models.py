@@ -32,7 +32,7 @@ class Events(db.Model):
     comments = db.relationship('Comment', backref='events')
 	
 
-    
+
     def __repr__(self): #string print method
         return "<Name: {}>".format(self.name)
 
@@ -43,7 +43,7 @@ class Comment(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.now())
     #add the foreign keys
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    destination_id = db.Column(db.Integer, db.ForeignKey('destinations.id'))
+    destination_id = db.Column(db.Integer, db.ForeignKey('events.id'))
 
 
     def __repr__(self):
