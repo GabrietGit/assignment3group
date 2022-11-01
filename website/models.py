@@ -17,7 +17,7 @@ class User(db.Model, UserMixin):
 
 
 class Events(db.Model):
-    __tablename__ = 'Events'
+    __tablename__ = 'events'
     id = db.Column(db.Integer, primary_key=True)
     music_name = db.Column(db.String(80))
     music_type = db.Column(db.String(200))
