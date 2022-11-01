@@ -38,6 +38,8 @@ def create_app():
     # a commonly used practice.
     from . import views
     app.register_blueprint(views.mainbp)
+    from . import events
+    app.register_blueprint(events.bp)
     from . import auth
     app.register_blueprint(auth.bp)
     
