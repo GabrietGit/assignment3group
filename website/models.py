@@ -42,8 +42,8 @@ class Comment(db.Model):
     text = db.Column(db.String(400))
     created_at = db.Column(db.DateTime, default=datetime.now())
     #add the foreign keys
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    destination_id = db.Column(db.Integer, db.ForeignKey('events.id'))
+    id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    event_id = db.Column(db.Integer, db.ForeignKey('events.id'))
 
 
     def __repr__(self):
