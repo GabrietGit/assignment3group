@@ -31,6 +31,7 @@ class Events(db.Model):
     # ... Create the Comments db.relationship
 	# relation to call destination.comments and comment.destination
     comments = db.relationship('Comment', backref='events')
+    __table_args__ = {'extend_existing': True}
 	
 
 
@@ -45,6 +46,7 @@ class Comment(db.Model):
     #add the foreign keys
     id = db.Column(db.Integer, db.ForeignKey('users.id'))
     event_id = db.Column(db.Integer, db.ForeignKey('events.id'))
+    __table_args__ = {'extend_existing': True}
 
 
     def __repr__(self):
