@@ -1,4 +1,3 @@
-
 from datetime import datetime
 import string
 from flask_wtf import FlaskForm
