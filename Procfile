@@ -1,1 +1,1 @@
-web: gunicorn -w 2 'website:create_app()'
+web: gunicorn -w 2 'assignment3group:create_app()'
