@@ -13,6 +13,7 @@ class User(db.Model, UserMixin):
 
     # relation to call user.comments and comment.created_by
     comments = db.relationship('Comment', backref='user')
+    __table_args__ = {'extend_existing': True}
 
 
 
