@@ -48,3 +48,7 @@ class RegisterForm(FlaskForm):
 
     #submit button
     submit = SubmitField("Register")
+
+class CommentForm(FlaskForm):
+  text = TextAreaField('Comment', [InputRequired()])
+  submit = SubmitField('Create')
