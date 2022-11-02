@@ -38,7 +38,7 @@ def create():
     print('Successfully created new travel destination', 'success')
     #Always end with redirect when form is valid
     return redirect(url_for('events.create'))
-  return render_template('events/event creation.html', form=form)
+  return render_template('events/event_creation.html', form=form)
 
 def check_upload_file(form):
   #get file data from form  
