@@ -60,7 +60,3 @@ def check_upload_file(form):
   #save the file and return the db upload path  
   fp.save(upload_path)
   return db_upload_path
-
-class CommentForm(FlaskForm):
-  text = TextAreaField('Comment', [InputRequired()])
-  submit = SubmitField('Create')
