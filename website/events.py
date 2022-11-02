@@ -8,7 +8,7 @@ from werkzeug.utils import secure_filename
 #additional import:
 from flask_login import login_required, current_user
 
-bp = Blueprint('events', __name__, url_prefix='/events')
+bp = Blueprint('event', __name__, url_prefix='/events')
 
 @bp.route('/book', methods = ['GET', 'POST'])
 def book():
