@@ -20,60 +20,9 @@
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col">
-          <p><div class="mb-3">
-            <label for="music-name" class="col-form-label">Music name:</label>
-            <input type="text" class="form-control" id="music-name">
-            </div>
-          </p>
-          Music type:
-          <div class="form-floating">
-            <select class="form-select" id="select-type" aria-label="Floating label select example">
-              <option selected>None</option>
-              <option value="1">Classical</option>
-              <option value="2">Pop</option>
-              <option value="3">Jazz</option>
-              <option value="4">Rock</option>
-              <option value="5">Country</option>
-            </select>
-            <label for="select-type">Select music type</label>
-          </div>
-          <p><div class="mb-3">
-            <label for="Artist" class="col-form-label">Artist name:</label>
-            <input type="text" class="form-control" id="Artist">
-          </div></p>
-          <p>Date and time:</p>
-          <input type="datetime-local">
-          <p><div class="mb-3">
-            <label for="venue" class="col-form-label">Venue:</label>
-            <input type="text" class="form-control" id="venue">
-          </div></p>
-          <p>Event status:</p>
-          <div class="form-floating">
-            <select class="form-select" id="select-avail" aria-label="Floating label select">
-              <option selected>None</option>
-              <option value="1">Available</option>
-              <option value="2">Inactive</option>
-              <option value="3">Upcoming</option>
-              <option value="4">Cancelled</option>
-              <option value="5">Booked</option>
-            </select>
-            <label for="select-avail">Select the status for the event</label>
-          </div>
-          <p><div class="mb-3">
-            <label for="description" class="form-label">Enter a description for the event</label>
-            <p><textarea class="form-control" id="description"></textarea></p>
-            <button type="button" class="btn btn-outline-primary">Confirm</button>
-            <button type="button" class="btn btn-outline-primary">Cancel</button>
-          </div></p>
-        </div>
-        <div class="col">
-          <p><img src="img/Event 1 resized.jpg" class="d-block w-100" alt="event 1"></p>
-          <button type="button" class="btn btn-outline-primary">Upload image</button>
-          <button type="button" class="btn btn-outline-primary">Remove image</button>
-        </div>
-      </div>
+      
+      {{wtf.render_form(form)}}
+
     </div>
     <div class="footer">
       Copyright 2022
