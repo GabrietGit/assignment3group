@@ -21,4 +21,4 @@ def search():
 
 @mainbp.route('/event_creation')
 def event_creation():
-    return render_template('event_creation.html')
+    return render_template('destinations/event_creation.html')
