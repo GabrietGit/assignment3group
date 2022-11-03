@@ -19,6 +19,6 @@ def search():
     else:
         return redirect(url_for('main.index'))
 
-@mainbp.route('/event_creation.html')
+@mainbp.route('/event_creation')
 def event_creation():
     return render_template('event_creation.html')
