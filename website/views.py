@@ -43,8 +43,8 @@ def create():
   if FlaskForm.validate_on_submit():
     #call the function that checks and returns image
     db_file_path=check_upload_file(FlaskForm)
-    events=Events(name=FlaskForm.music_name.data,musictype=FlaskForm.music_type.data, 
-    image=db_file_path,artist=FlaskForm.artist_name.data,datetime=FlaskForm.date_and_time.data,venue=FlaskForm.venue.data,eventstatus=FlaskForm.event_status.data,description=FlaskForm.enter_description.data)
+    events=Events(music_name=FlaskForm.music_name.data,music_type=FlaskForm.music_type.data, 
+    image=db_file_path,artist_name=FlaskForm.artist_name.data,date_and_time=FlaskForm.date_and_time.data,venue=FlaskForm.venue.data,event_status=FlaskForm.event_status.data,description=FlaskForm.enter_description.data)
     # add the object to the db session
     db.session.add(events)
     # commit to the database
