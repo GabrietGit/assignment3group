@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, redirect,url_for
 from .models import Events
-from .forms import EventsForm, Form
+from .forms import EventsForm
 from . import db
 from flask_login import login_required
 import os
@@ -41,22 +41,22 @@ def create():
   print('Method type: ', request.method)
   FlaskForm = EventsForm()
   if FlaskForm.validate_on_submit():
-    #call the function that checks and returns image
+    #gets details
     db_file_path=check_upload_file(FlaskForm)
-    events=Events(name=FlaskForm.music_name.data,musictype=FlaskForm.music_type.data, 
-    image=db_file_path,artist=FlaskForm.artist_name.data,datetime=FlaskForm.date_and_time.data,venue=FlaskForm.venue.data,eventstatus=FlaskForm.event_status.data,description=FlaskForm.enter_description.data)
+    events=Events(music_name=FlaskForm.music_name.data,music_type=FlaskForm.music_type.data, 
+    image=db_file_path,artist_name=FlaskForm.artist_name.data,date_and_time=FlaskForm.date_and_time.data,venue=FlaskForm.venue.data,event_status=FlaskForm.event_status.data,description=FlaskForm.enter_description.data)
     # add the object to the db session
     db.session.add(events)
     # commit to the database
     db.session.commit()
-    print('Successfully created new travel destination', 'success')
+    print('Successfully created new music event', 'success')
     #Always end with redirect when form is valid
     return redirect(url_for('events.create'))
   return render_template('destinations/event_creation.html', FlaskForm=FlaskForm)
 
-def check_upload_file(form):
+def check_upload_file(FlaskForm):
   #get file data from form  
-  fp=form.image.data
+  fp=FlaskForm.image.data
   filename=fp.filename
   #get the current path of the module file… store image file relative to this path  
   BASE_PATH=os.path.dirname(__file__)
