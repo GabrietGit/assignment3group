@@ -20,13 +20,13 @@
                   </div>              
                   <div class="carousel inner">
                     <div class="carousel-item active">
-                      <img src="/static/image/Music festival 1.jpeg" class="d-block w-100" alt="Music Festival 1">
+                      <img src="{{url_for('static', filename = 'image/Music Festival 1.jpeg')}}" class="d-block w-100" alt="Music Festival 1">
                     </div>
                     <div class="carousel-item">
-                      <img src="/static/image/Music festival 2.jpeg" class="d-block w-100" alt="Music Festival 2">
+                      <img src="{{url_for('static', filename = 'image/Music Festival 2.jpeg')}}" class="d-block w-100" alt="Music Festival 2">
                     </div>
                     <div class="carousel-item">
-                      <img src="/static/image/Music festival 3.jpeg" class="d-block w-100" alt="Music Festival 3">
+                      <img src="{{url_for('static', filename = 'image/Music Festival 3.jpeg')}}" class="d-block w-100" alt="Music Festival 3">
                     </div>
                   </div>
                 </div>
@@ -40,7 +40,7 @@
           </div>
           <div class="row">
             <div class="col">
-              <a href="event details.html"><p><img src="img/Event 1 resized.jpg"></p></a>
+              <a href="event details.html"><p><img src="/static/image/Event 1 resized.jpg"></p></a>
               <h4>Event 1</h4>
               <p>The event description goes here...</p>
               <p>Status: Available</p>
