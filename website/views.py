@@ -49,7 +49,7 @@ def create():
     db.session.add(events)
     # commit to the database
     db.session.commit()
-    print('Successfully created new travel destination', 'success')
+    print('Successfully created new music event', 'success')
     #Always end with redirect when form is valid
     return redirect(url_for('events.create'))
   return render_template('destinations/event_creation.html', FlaskForm=FlaskForm)
