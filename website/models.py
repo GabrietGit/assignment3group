@@ -26,7 +26,7 @@ class Events(db.Model):
     date_and_time = db.Column(db.String(200))
     venue = db.Column(db.String(200))
     event_status = db.Column(db.String(200))
-    ticket_amount = db.Column(db.Integer(200))
+    ticket_amount = db.Column(db.Integer())
     description = db.Column(db.String(200))
     # ... Create the Comments db.relationship
 	# relation to call destination.comments and comment.destination
