@@ -28,6 +28,14 @@ def search():
 def event_creation():
     return render_template('destinations/event_creation.html')
 
+@mainbp.route('/event details')
+def event_details():
+    return render_template('destinations/event details.html')
+
+@mainbp.route('/user')
+def user():
+    return render_template('destinations/user.html')
+
 @mainbp.route('/create', methods = ['GET', 'POST'])
 def create():
   print('Method type: ', request.method)
