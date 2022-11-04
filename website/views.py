@@ -36,6 +36,10 @@ def event_details():
 def user():
     return render_template('destinations/user.html')
 
+@mainbp.route('/booking_history')
+def booking_history():
+    return render_template('destinations/user booking history.html')
+
 @mainbp.route('/create', methods = ['GET', 'POST'])
 def create():
   print('Method type: ', request.method)
