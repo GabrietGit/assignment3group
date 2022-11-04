@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, redirect,url_for
 from .models import Events
-from .forms import EventsForm, Form
+from .forms import EventsForm
 from . import db
 from flask_login import login_required
 import os
@@ -54,9 +54,9 @@ def create():
     return redirect(url_for('events.create'))
   return render_template('destinations/event_creation.html', FlaskForm=FlaskForm)
 
-def check_upload_file(form):
+def check_upload_file(FlaskForm):
   #get file data from form  
-  fp=form.image.data
+  fp=FlaskForm.image.data
   filename=fp.filename
   #get the current path of the module file… store image file relative to this path  
   BASE_PATH=os.path.dirname(__file__)
