@@ -31,12 +31,12 @@ def event_creation():
 @mainbp.route('/create', methods = ['GET', 'POST'])
 def create():
   print('Method type: ', request.method)
-  form = EventsForm()
-  if form.validate_on_submit():
+  FlaskForm = EventsForm()
+  if FlaskForm.validate_on_submit():
     #call the function that checks and returns image
-    db_file_path=check_upload_file(form)
-    events=Events(name=form.name.data,description=form.description.data, 
-    image=db_file_path,currency=form.currency.data)
+    db_file_path=check_upload_file(FlaskForm)
+    events=Events(name=FlaskForm.name.data,description=FlaskForm.description.data, 
+    image=db_file_path,currency=FlaskForm.currency.data)
     # add the object to the db session
     db.session.add(events)
     # commit to the database
@@ -44,7 +44,7 @@ def create():
     print('Successfully created new travel destination', 'success')
     #Always end with redirect when form is valid
     return redirect(url_for('events.create'))
-  return render_template('destinations/event_creation.html', form=form)
+  return render_template('destinations/event_creation.html', FlaskForm=FlaskForm)
 
 def check_upload_file(form):
   #get file data from form  
