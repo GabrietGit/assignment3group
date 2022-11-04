@@ -1,7 +1,7 @@
 from datetime import datetime
 import string
 from flask_wtf import FlaskForm
-from wtforms.fields import TextAreaField, SubmitField, StringField, PasswordField, SelectField, DateField, DateTimeField
+from wtforms.fields import TextAreaField, SubmitField, StringField, PasswordField, SelectField, DateField, IntegerField
 from wtforms.validators import InputRequired, Length, Email, EqualTo
 from flask_wtf.file import FileRequired, FileField, FileAllowed
 from wtforms import Form
@@ -29,6 +29,7 @@ class EventsForm(FlaskForm):
   venue = StringField('Venue', validators=[InputRequired()])
   event_status = SelectField(u'Event Status', 
             choices=[('None'), ('Available'), ('Inactive'), ('Upcoming'), ('Cancelled'), ('Booked')], validate_choice=True)
+  ticket_amount = IntegerField('Ticket Amount', validators=[InputRequired()])
   enter_description = TextAreaField('Enter a description for the event', validators=[InputRequired()])
   submit = SubmitField("Confirm")
 
