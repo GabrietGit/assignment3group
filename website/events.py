@@ -22,7 +22,7 @@ def book():
     form = BookForm()
     if form.validate_on_submit():
         event=Events(name=form.name.data,email=form.email_id.data, 
-        phone=form.phone_number.data,ticet=form.ticket_amount.data)()
+        phone=form.phone_number.data,ticket=form.ticket_amount.data)()
         db.session.add(event)
         db.session.commit
         print('Successfully booked event', 'success')
