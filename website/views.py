@@ -28,9 +28,10 @@ def search():
 def event_creation():
     return render_template('destinations/event_creation.html')
 
-@mainbp.route('/event details')
-def event_details():
-    return render_template('destinations/event details.html')
+@mainbp.route('/event details/<id>')
+def event_details(id):
+    event_details = Events.query.filter_by(id=id).first()
+    return render_template('destinations/event details.html', event_details=event_details)
 
 @mainbp.route('/user')
 def user():
