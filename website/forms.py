@@ -27,7 +27,7 @@ class EventsForm(FlaskForm):
   artist_name = StringField('Artist Name', validators=[InputRequired()])
   date_and_time = DateField('Date and Time', format='%Y-%m-%d')
   venue = StringField('Venue', validators=[InputRequired()])
-  event_status = SelectField(u'Music Type', 
+  event_status = SelectField(u'Event Status', 
             choices=[('None'), ('Available'), ('Inactive'), ('Upcoming'), ('Cancelled'), ('Booked')], validate_choice=True)
   enter_description = TextAreaField('Enter a description for the event', validators=[InputRequired()])
   submit = SubmitField("Confirm")
