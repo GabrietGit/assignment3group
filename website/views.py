@@ -41,15 +41,15 @@ def create():
   print('Method type: ', request.method)
   FlaskForm = EventsForm()
   if FlaskForm.validate_on_submit():
-    #call the function that checks and returns image
+    #gets details
     db_file_path=check_upload_file(FlaskForm)
-    events=Events(name=FlaskForm.music_name.data,musictype=FlaskForm.music_type.data, 
-    image=db_file_path,artist=FlaskForm.artist_name.data, datetime=FlaskForm.date_and_time.data, venue=FlaskForm.venue.data, )
+    events=Events(music_name=FlaskForm.music_name.data,music_type=FlaskForm.music_type.data, 
+    image=db_file_path,artist_name=FlaskForm.artist_name.data,date_and_time=FlaskForm.date_and_time.data,venue=FlaskForm.venue.data,event_status=FlaskForm.event_status.data,description=FlaskForm.enter_description.data)
     # add the object to the db session
     db.session.add(events)
     # commit to the database
     db.session.commit()
-    print('Successfully created new travel destination', 'success')
+    print('Successfully created new music event', 'success')
     #Always end with redirect when form is valid
     return redirect(url_for('events.create'))
   return render_template('destinations/event_creation.html', FlaskForm=FlaskForm)
