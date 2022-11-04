@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, redirect,url_for
 from .models import Events
-from .forms import EventsForm
+from .forms import EventsForm, Form
 from . import db
 from flask_login import login_required
 import os
