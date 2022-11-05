@@ -39,7 +39,17 @@ def user():
 
 @mainbp.route('/booking_history')
 def booking_history():
-    return render_template('destinations/user booking history.html')
+    return render_template('user booking history.html')
+
+@mainbp.route('/base/<searchCategories>')
+def category_base(searchCategories):
+    if searchCategories == 'Classical':
+        events = Events.query.all()
+        return render_template('event details.html', events=events)
+    else: events = Events.query.filter_by(event_status=searchCategories).all()
+    return render_template('event details.html', events=events)  
+
+
 
 @mainbp.route('/create', methods = ['GET', 'POST'])
 def create():
@@ -56,7 +66,7 @@ def create():
     db.session.commit()
     print('Successfully created new music event', 'success')
     #Always end with redirect when form is valid
-    return redirect(url_for('destination.event_creation'))
+    return redirect(url_for('main.index'))
   return render_template('destinations/event_creation.html', FlaskForm=FlaskForm)
 
 def check_upload_file(FlaskForm):

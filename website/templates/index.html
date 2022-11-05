@@ -38,29 +38,18 @@
           {% block content %} 
           <div class="row">
             <div class="col">
-              <h1>Popular events</h1>
+              <h1>Events</h1>
             </div>
           </div>
 
-          {% for destination in destinations %}
+          {% for events in events %}
           <div class="row">
             <div class="col">
-              <a href="/event details"><p><img src="https://images.pexels.com/photos/2263436/pexels-photo-2263436.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"></p></a>
-              <h4>Event 1</h4>
-              <p>The event description goes here...</p>
-              <p>Status: Available</p>
-            </div>
-            <div class="col">
-              <a href="/event details"><p><img src="https://images.pexels.com/photos/736355/pexels-photo-736355.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"></p></a>
-              <h4>Event 2</h4>
-              <p>The event description...</p>
-              <p>Status: Upcoming</p>
-            </div>
-            <div class="col">
-              <a href="/event details"><p><img src="https://images.pexels.com/photos/167605/pexels-photo-167605.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"></p></a>
-              <h4>Event 3</h4>
-              <p>The event description...</p>
-              <p>Status: Available</p>
+              <img src="{{events.image}}">
+              <h4>{{events.music_name}}</h4>
+              <p>{{events.description}}</p>
+              <p>{{events.event_status}}</p>
+              <p><a class="btn btn-primary" href="{{url_for('main.event_details', id=events.id)}}" role="button">View</a></p>
             </div>
           </div>
           {% endfor %}
