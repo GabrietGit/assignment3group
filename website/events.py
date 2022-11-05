@@ -19,6 +19,7 @@ def show(id):
 
 @bp.route('/book', methods = ['GET', 'POST'])
 def book():
+    print('Method type: ', request.method)
     form = BookForm()
     if form.validate_on_submit():
         event=Events(name=form.name.data,email=form.email_id.data, 
@@ -26,6 +27,8 @@ def book():
         db.session.add(event)
         db.session.commit
         print('Successfully booked event', 'success')
-    return render_template('events/event details.html', form=form) 
+    return render_template('events/event details.html', form=form)
+    
+
 
   
