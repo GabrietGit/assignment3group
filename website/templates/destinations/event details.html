@@ -67,7 +67,7 @@
         </div>
       </div>
       <div class="row border-bottom"> 
-        {{wtf.render_form(FlaskForm,"/views/{0}/comment".format(event_details.id))}} 
+        {{wtf.render_form(FlaskForm,"/events/{0}/comment".format(event_details.id))}} 
         {% for comment in event_details.comments %}
         <div class="col">
           <b>{{comment.user.name}} <span class="ml-2 text-muted">January 2017</span></b>
