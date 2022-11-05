@@ -1,8 +1,8 @@
 from flask import Blueprint, render_template, request, redirect,url_for
-from .models import Events, Bookings
+from .models import Events, Bookings, Comment
 from .forms import EventsForm, BookForm, CommentForm
 from . import db
-from flask_login import login_required
+from flask_login import login_required, current_user
 import os
 from werkzeug.utils import secure_filename
 from flask_wtf import FlaskForm
@@ -131,3 +131,25 @@ def check_upload_file(FlaskForm):
   #save the file and return the db upload path  
   fp.save(upload_path)
   return db_upload_path
+
+@mainbp.route('/<destination>/comment', methods = ['GET', 'POST'])  
+@login_required
+def comment(events_details):  
+    form = CommentForm()  
+    #get the destination object associated to the page and the comment
+    event_obj = Events.query.filter_by(id=events_details).first()  
+    if form.validate_on_submit():  
+      #read the comment from the form
+      comment = Comment(text=form.text.data,  
+                        destination=event_obj,
+                        user=current_user) 
+      #here the back-referencing works - comment.destination is set
+      # and the link is created
+      db.session.add(comment) 
+      db.session.commit() 
+
+      #flashing a message which needs to be handled by the html
+      #flash('Your comment has been added', 'success')  
+      print('Your comment has been added', 'success') 
+    # using redirect sends a GET request to destination.show
+    return redirect(url_for('destination.show', id=events_details))
