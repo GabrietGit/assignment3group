@@ -44,12 +44,13 @@ def booking_history():
 @mainbp.route('/base/<searchCategories>')
 def category_base(searchCategories):
     if searchCategories == 'Classical':
-        events = Events.query.all()
+        events = Events.query.filter_by(music_type=searchCategories).all()
         return render_template('index.html', events=events)
     elif searchCategories == 'Pop':
-        events = Events.query.all()
+        events = Events.query.filter_by(music_type=searchCategories).all()
         return render_template('index.html', events=events)
-    else: events = Events.query.filter_by(event_status=searchCategories).all()
+    else: events = Events.query.filter_by(music_type=searchCategories).all()
+
     return render_template('index.html', events=events)
 
 
