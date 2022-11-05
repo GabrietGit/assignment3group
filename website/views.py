@@ -5,6 +5,13 @@ from . import db
 from flask_login import login_required
 import os
 from werkzeug.utils import secure_filename
+from flask_wtf import FlaskForm
+from wtforms.fields import TextAreaField,SubmitField, StringField, PasswordField, DateField, FloatField, FileField, IntegerField, RadioField, SelectField
+from wtforms.validators import InputRequired, Length, Email, EqualTo, url, NumberRange
+from flask_wtf.file import FileRequired, FileField, FileAllowed
+from flask_wtf import FlaskForm as FlaskFormWTF
+
+ALLOWED_FILE = {'PNG','JPG','png','jpg'}
 
 mainbp = Blueprint('main', __name__)
 
@@ -49,7 +56,6 @@ def select_edit(id):
     if FlaskForm.validate_on_submit():
           select_edit.music_name = FlaskForm.music_name.data
           select_edit.music_type = FlaskForm.music_type.data
-          select_edit.image = FlaskForm.image.data
           select_edit.artist_name = FlaskForm.artist_name.data
           select_edit.date_and_time = FlaskForm.date_and_time.data
           select_edit.venue = FlaskForm.venue.data
