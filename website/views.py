@@ -42,6 +42,24 @@ def user():
 def booking_history():
     return render_template('user booking history.html')
 
+@mainbp.route('/edit/<id>', methods = ['GET', 'POST'])
+def select_edit(id):
+    select_edit = Events.query.filter_by(id=id).first()
+    FlaskForm = EventsForm()
+    if FlaskForm.validate_on_submit():
+          select_edit.music_name = FlaskForm.music_name.data
+          select_edit.music_type = FlaskForm.music_type.data
+          select_edit.image = FlaskForm.image.data
+          select_edit.artist_name = FlaskForm.artist_name.data
+          select_edit.date_and_time = FlaskForm.date_and_time.data
+          select_edit.venue = FlaskForm.venue.data
+          select_edit.event_status = FlaskForm.event_status.data
+          select_edit.ticket_amount = FlaskForm.ticket_amount.data
+          select_edit.description = FlaskForm.enter_description.data
+          db.session.commit()                 
+          return redirect(url_for('main.index'))
+    return render_template('destinations/event_creation.html', FlaskForm=FlaskForm, select_edit=select_edit)
+
 @mainbp.route('/base/<searchCategories>')
 def category_base(searchCategories):
     if searchCategories == 'Classical':
