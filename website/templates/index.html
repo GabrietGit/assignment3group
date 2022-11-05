@@ -42,13 +42,13 @@
             </div>
           </div>
 
-          {% for destination in destinations %}
+          {% for events in events %}
           <div class="row">
             <div class="col">
-              <a href="/event details"><p><img src="https://images.pexels.com/photos/2263436/pexels-photo-2263436.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"></p></a>
-              <h4>Event 1</h4>
-              <p>The event description goes here...</p>
-              <p>Status: Available</p>
+              <a href="{{url_for('main.event_details', id=events.id)}}"><p><img src="{{events.image}}"></p></a>
+              <h4>{{events.music_name}}</h4>
+              <p>{{events.description}}</p>
+              <p>{{events.event_status}}</p>
             </div>
             <div class="col">
               <a href="/event details"><p><img src="https://images.pexels.com/photos/736355/pexels-photo-736355.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"></p></a>
