@@ -41,6 +41,16 @@ def user():
 def booking_history():
     return render_template('user booking history.html')
 
+@mainbp.route('/base/<searchCategories>')
+def category_base(searchCategories):
+    if searchCategories == 'Classical':
+        events = Events.query.all()
+        return render_template('event details.html', events=events)
+    else: events = Events.query.filter_by(event_status=searchCategories).all()
+    return render_template('event details.html', events=events)  
+
+
+
 @mainbp.route('/create', methods = ['GET', 'POST'])
 def create():
   print('Method type: ', request.method)

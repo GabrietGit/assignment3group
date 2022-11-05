@@ -6,6 +6,7 @@
         <h1>Booking History</h1>
       </div>
     <div class="container">
+      {% for events in events %}
       <div class="row">
         <div class="col">
           <table class="table">
@@ -21,9 +22,9 @@
             <tbody>
               <tr>
                 <th scope="row">1</th>
-                <td>12345</td>
-                <td><img src="img/Event 1 small.jpg"></td>
-                <td>Event 1</td>
+                <td>{{events.id}}</td>
+                <td><img src={{events.image}}></td>
+                <td>{{events.music_name}}</td>
                 <td>10/07/22</td>
               </tr>
               <tr>
@@ -44,6 +45,7 @@
           </table>
         </div>
       </div>
+    {% endfor %}
     </div>
     <div class="footer">
       Copyright 2022
