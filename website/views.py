@@ -68,6 +68,15 @@ def category_base(searchCategories):
     elif searchCategories == 'Pop':
         events = Events.query.filter_by(music_type=searchCategories).all()
         return render_template('index.html', events=events)
+    elif searchCategories == 'Jazz':
+        events = Events.query.filter_by(music_type=searchCategories).all()
+        return render_template('index.html', events=events)
+    elif searchCategories == 'Rock':
+        events = Events.query.filter_by(music_type=searchCategories).all()
+        return render_template('index.html', events=events)
+    elif searchCategories == 'Country':
+        events = Events.query.filter_by(music_type=searchCategories).all()
+        return render_template('index.html', events=events)
     else: events = Events.query.filter_by(music_type=searchCategories).all()
 
     return render_template('index.html', events=events)
