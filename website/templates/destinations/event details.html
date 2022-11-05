@@ -32,9 +32,25 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-
-                  {{wtf.render_form(Form)}}
-                  
+                  <form>
+                    <div class="input-group">
+                      <span class="input-group-text">Full name</span>
+                      <input type="text" aria-label="name" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                      <label for="email" class="col-form-label">Email address</label>
+                      <input type="text" class="form-control" id="email">
+                    </div>
+                    <div class="mb-3">
+                      <label for="phone-num" class="col-form-label">Phone number</label>
+                      <input type="text" class="form-control" id="phone-num">
+                    </div>
+                    <div class="mb-3">
+                      <label for="ticket-num" class="col-form-label">Enter ticket amount</label>
+                      <input type="text" class="form-control" id="ticket-num">
+                    </div>
+                    Price: $
+                  </form>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>

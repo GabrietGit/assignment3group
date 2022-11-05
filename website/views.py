@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, redirect,url_for
-from .models import Events
-from .forms import EventsForm
+from .models import Events, Bookings
+from .forms import EventsForm, BookForm
 from . import db
 from flask_login import login_required
 import os
@@ -68,6 +68,18 @@ def create():
     #Always end with redirect when form is valid
     return redirect(url_for('main.index'))
   return render_template('destinations/event_creation.html', FlaskForm=FlaskForm)
+
+def book():
+    print('Method type: ', request.method)
+    FlaskForm = BookForm()
+    if FlaskForm.validate_on_submit():
+        booking=Bookings(name=FlaskForm.full_name.data,email=FlaskForm.email_address.data,
+        phone=FlaskForm.phone_number.data,ticket=FlaskForm.enter_ticket_amount.data)()
+        db.session.add(booking)
+        db.session.commit
+        print('Successfully booked event', 'success')
+        return redirect(url_for('main.index'))
+    return render_template('destinations/event details.html', FlaskForm=FlaskForm)
 
 def check_upload_file(FlaskForm):
   #get file data from form  
