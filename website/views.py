@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, redirect,url_for
-from .models import Events
-from .forms import EventsForm
+from .models import Events, Bookings
+from .forms import EventsForm, BookForm, CommentForm
 from . import db
 from flask_login import login_required
 import os
@@ -28,10 +28,16 @@ def search():
 def event_creation():
     return render_template('destinations/event_creation.html')
 
+@mainbp.route('/edit/<id>')
+def edit(id):
+    editingdetails = Events.query.filter_by(id=id).first()
+    return render_template('destinations/event_creation.html', editingdetails=editingdetails)
+
 @mainbp.route('/event details/<id>')
 def event_details(id):
     event_details = Events.query.filter_by(id=id).first()
-    return render_template('destinations/event details.html', event_details=event_details)
+    FlaskForm = CommentForm()
+    return render_template('destinations/event details.html', FlaskForm=FlaskForm, event_details=event_details)
 
 @mainbp.route('/user')
 def user():
@@ -40,6 +46,18 @@ def user():
 @mainbp.route('/booking_history')
 def booking_history():
     return render_template('user booking history.html')
+
+@mainbp.route('/base/<searchCategories>')
+def category_base(searchCategories):
+    if searchCategories == 'Classical':
+        events = Events.query.filter_by(music_type=searchCategories).all()
+        return render_template('index.html', events=events)
+    elif searchCategories == 'Pop':
+        events = Events.query.filter_by(music_type=searchCategories).all()
+        return render_template('index.html', events=events)
+    else: events = Events.query.filter_by(music_type=searchCategories).all()
+
+    return render_template('index.html', events=events)
 
 @mainbp.route('/create', methods = ['GET', 'POST'])
 def create():
@@ -56,8 +74,20 @@ def create():
     db.session.commit()
     print('Successfully created new music event', 'success')
     #Always end with redirect when form is valid
-    return redirect(url_for('main.event_creation'))
+    return redirect(url_for('main.index'))
   return render_template('destinations/event_creation.html', FlaskForm=FlaskForm)
+
+def book():
+    print('Method type: ', request.method)
+    FlaskForm = BookForm()
+    if FlaskForm.validate_on_submit():
+        booking=Bookings(name=FlaskForm.full_name.data,email=FlaskForm.email_address.data,
+        phone=FlaskForm.phone_number.data,ticket=FlaskForm.enter_ticket_amount.data)()
+        db.session.add(booking)
+        db.session.commit
+        print('Successfully booked event', 'success')
+        return redirect(url_for('main.index'))
+    return render_template('destinations/event details.html', FlaskForm=FlaskForm)
 
 def check_upload_file(FlaskForm):
   #get file data from form  

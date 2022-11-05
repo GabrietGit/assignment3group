@@ -16,16 +16,7 @@ def show(id):
     # create the comment form
     cform = CommentForm()    
     return render_template('events/event details.html', event=event, form=cform)
+    
 
-@bp.route('/book', methods = ['GET', 'POST'])
-def book():
-    form = BookForm()
-    if form.validate_on_submit():
-        event=Events(name=form.name.data,email=form.email_id.data, 
-        phone=form.phone_number.data,ticket=form.ticket_amount.data)()
-        db.session.add(event)
-        db.session.commit
-        print('Successfully booked event', 'success')
-    return render_template('events/event details.html', form=form) 
 
   
