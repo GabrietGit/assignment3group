@@ -56,7 +56,7 @@ def create():
     db.session.commit()
     print('Successfully created new music event', 'success')
     #Always end with redirect when form is valid
-    return redirect(url_for('destination.event_creation'))
+    return redirect(url_for('main.event_creation'))
   return render_template('destinations/event_creation.html', FlaskForm=FlaskForm)
 
 def check_upload_file(FlaskForm):
