@@ -28,6 +28,11 @@ def search():
 def event_creation():
     return render_template('destinations/event_creation.html')
 
+@mainbp.route('/edit/<id>')
+def edit(id):
+    editingdetails = Events.query.filter_by(id=id).first()
+    return render_template('destinations/event_creation.html')
+
 @mainbp.route('/event details/<id>')
 def event_details(id):
     event_details = Events.query.filter_by(id=id).first()
@@ -45,12 +50,14 @@ def booking_history():
 @mainbp.route('/base/<searchCategories>')
 def category_base(searchCategories):
     if searchCategories == 'Classical':
-        events = Events.query.all()
-        return render_template('event details.html', events=events)
-    else: events = Events.query.filter_by(event_status=searchCategories).all()
-    return render_template('event details.html', events=events)  
+        events = Events.query.filter_by(music_type=searchCategories).all()
+        return render_template('index.html', events=events)
+    elif searchCategories == 'Pop':
+        events = Events.query.filter_by(music_type=searchCategories).all()
+        return render_template('index.html', events=events)
+    else: events = Events.query.filter_by(music_type=searchCategories).all()
 
-
+    return render_template('index.html', events=events)
 
 @mainbp.route('/create', methods = ['GET', 'POST'])
 def create():
