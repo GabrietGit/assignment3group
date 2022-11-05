@@ -17,9 +17,6 @@ def show(id):
     cform = CommentForm()    
     return render_template('events/event details.html', event=event, form=cform)
 
-@bp.route('/event details')
-def event_creation():
-    return render_template('events/event details.html')
 
 @bp.route('/book', methods = ['GET', 'POST'])
 def book():

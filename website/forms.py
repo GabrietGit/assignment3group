@@ -10,10 +10,10 @@ ALLOWED_FILE = {'PNG','JPG','png','jpg'}
 
 #books event
 class BookForm(FlaskForm):
-  name = StringField('Event', validators=[InputRequired()])
-  email_id = StringField('Email Address', validators=[Email('Please enter a valid email')])
+  full_name = StringField('Full Name', validators=[InputRequired()])
+  email_address = StringField('Email Address', validators=[Email('Please enter a valid email')])
   phone_number = StringField('Phone Number', validators=[InputRequired()])
-  ticket_amount = StringField('Ticket Amount', validators=[InputRequired()])
+  enter_ticket_amount = StringField('Ticket Amount', validators=[InputRequired()])
   submit = SubmitField("Book")
 
 #Events Creation
