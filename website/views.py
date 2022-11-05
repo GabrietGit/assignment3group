@@ -82,6 +82,7 @@ def category_base(searchCategories):
     return render_template('index.html', events=events)
 
 @mainbp.route('/create', methods = ['GET', 'POST'])
+@login_required
 def create():
   print('Method type: ', request.method)
   FlaskForm = EventsForm()
