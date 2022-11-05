@@ -39,7 +39,7 @@ def user():
 
 @mainbp.route('/booking_history')
 def booking_history():
-    return render_template('destinations/user booking history.html')
+    return render_template('user booking history.html')
 
 @mainbp.route('/create', methods = ['GET', 'POST'])
 def create():
@@ -56,7 +56,7 @@ def create():
     db.session.commit()
     print('Successfully created new music event', 'success')
     #Always end with redirect when form is valid
-    return redirect(url_for('events.event_creation'))
+    return redirect(url_for('main.event_creation'))
   return render_template('destinations/event_creation.html', FlaskForm=FlaskForm)
 
 def check_upload_file(FlaskForm):
