@@ -14,7 +14,13 @@ class User(db.Model, UserMixin):
     # relation to call user.comments and comment.created_by
     comments = db.relationship('Comment', backref='user')
 
-
+class Bookings(db.Model):
+    __tablename__ = 'booking'
+    id = db.Column(db.Integer, primary_key=True)
+    fullname = db.Column(db.String(80))
+    emailaddress = db.Column(db.String(80))
+    phonenumber = db.Column(db.String(80))
+    tickets = db.Column(db.String(80))
 
 class Events(db.Model):
     __tablename__ = 'events'
