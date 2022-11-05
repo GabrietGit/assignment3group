@@ -64,14 +64,16 @@
       <div class="row">
         <div class="col">
           <h4>Comments</h4>
-          <form>
-            <textarea class="form-control">Write a comment...</textarea><br>
-            <p><input type="submit" value="Post"></p>  
-          </form>
-          <p>User1</p>
-          <textarea cols="50" readonly>This is a comment talking about this event.</textarea>
         </div>
-        <div class="col"></div>
+      </div>
+      <div class="row border-bottom"> 
+        {{wtf.render_form(FlaskForm,"/views/{0}/comment".format(event_details.id))}} 
+        {% for comment in event_details.comments %}
+        <div class="col">
+          <b>{{comment.user.name}} <span class="ml-2 text-muted">January 2017</span></b>
+          <p>{{comment.text}}</p>  
+        </div>
+        {% endfor %} 
       </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>

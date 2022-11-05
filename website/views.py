@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, redirect,url_for
 from .models import Events, Bookings
-from .forms import EventsForm, BookForm
+from .forms import EventsForm, BookForm, CommentForm
 from . import db
 from flask_login import login_required
 import os
@@ -36,7 +36,8 @@ def edit(id):
 @mainbp.route('/event details/<id>')
 def event_details(id):
     event_details = Events.query.filter_by(id=id).first()
-    return render_template('destinations/event details.html', event_details=event_details)
+    FlaskForm = CommentForm()
+    return render_template('destinations/event details.html', FlaskForm=FlaskForm, event_details=event_details)
 
 @mainbp.route('/user')
 def user():
