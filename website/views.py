@@ -132,7 +132,7 @@ def check_upload_file(FlaskForm):
   fp.save(upload_path)
   return db_upload_path
 
-@mainbp.route('/<destination>/comment', methods = ['GET', 'POST'])  
+@mainbp.route('/<id>/comment', methods = ['GET', 'POST'])  
 @login_required
 def comment(events_details):  
     form = CommentForm()  
