@@ -28,6 +28,10 @@ def search():
 def event_creation():
     return render_template('destinations/event_creation.html')
 
+@mainbp.route('/base/edit')
+def select_edit():
+    return render_template('index.html', select_edit=select_edit)
+
 @mainbp.route('/edit/<id>')
 def edit(id):
     editingdetails = Events.query.filter_by(id=id).first()
