@@ -45,11 +45,11 @@
           {% for events in events %}
           <div class="row">
             <div class="col">
-              <a href="{{url_for('main.event_details', id=events.id)}}"><p><img src="{{events.image}}"></p></a>
+              <img src="{{events.image}}">
               <h4>{{events.music_name}}</h4>
               <p>{{events.description}}</p>
               <p>{{events.event_status}}</p>
-              <p><a class="btn btn-primary" href="#" role="button">View</a></p>
+              <p><a class="btn btn-primary" href="{{url_for('main.event_details', id=events.id)}}" role="button">View</a></p>
             </div>
             <div class="col">
               <a href="/event details"><p><img src="https://images.pexels.com/photos/736355/pexels-photo-736355.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"></p></a>
