@@ -45,9 +45,9 @@ def booking_history():
 def category_base(searchCategories):
     if searchCategories == 'Classical':
         events = Events.query.all()
-        return render_template('event details.html', events=events)
+        return render_template('index.html', events=events)
     else: events = Events.query.filter_by(event_status=searchCategories).all()
-    return render_template('event details.html', events=events)  
+    return render_template('index.html', events=events)
 
 
 
